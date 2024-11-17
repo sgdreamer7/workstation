@@ -1,0 +1,31 @@
+# @format
+
+services:
+  code-server:
+    image: lscr.io/linuxserver/openvscode-server:latest
+    container_name: openvscode-server
+    environment:
+      - PUID=501
+      - PGID=20
+      - TZ=Etc/UTC
+      # - CONNECTION_TOKEN= #optional
+      # - CONNECTION_SECRET= #optional
+      # - SUDO_PASSWORD=password #optional
+      # - SUDO_PASSWORD_HASH= #optional
+      # - DOCKER_MODS=linuxserver/mods:code-server-python3
+    volumes:
+      - ./data/vscode-config:/config
+      - ~:/home/developer
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.vscode.rule=Host(`vscode.workstation`)'
+      - 'traefik.http.routers.vscode.entrypoints=web'
+      - 'traefik.http.services.vscode.loadBalancer.server.port=3000'
+    networks:
+      - workstation
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+networks:
+  workstation:
+    name: 'workstation'

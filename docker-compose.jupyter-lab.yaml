@@ -1,0 +1,21 @@
+# @format
+
+services:
+  jupyter-lab:
+    image: quay.io/jupyter/base-notebook
+    container_name: jupyter-lab
+    volumes:
+      - ~:/home/jovyan/work
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.jupyter-lab.rule=Host(`jupyter-lab.workstation`)'
+      - 'traefik.http.routers.jupyter-lab.entrypoints=web'
+      - 'traefik.http.services.jupyter-lab.loadBalancer.server.port=8888'
+    networks:
+      - workstation
+    command: "start-notebook.py --IdentityProvider.token=''"
+
+networks:
+  workstation:
+    name: 'workstation'

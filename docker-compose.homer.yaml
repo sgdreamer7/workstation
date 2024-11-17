@@ -1,0 +1,23 @@
+# @format
+
+services:
+  homer:
+    image: b4bz/homer
+    container_name: homer
+    networks:
+      - workstation
+    volumes:
+      - ./assets:/www/assets
+    user: 1000:1000
+    environment:
+      - INIT_ASSETS=0
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.homer.rule=Host(`home.workstation`)'
+      - 'traefik.http.routers.homer.entrypoints=web'
+      - 'traefik.http.services.homer.loadBalancer.server.port=8080'
+
+networks:
+  workstation:
+    name: 'workstation'

@@ -1,0 +1,158 @@
+---
+title: "Workstation"
+subtitle: "sgdreamer7"
+logo: "assets/tools/logo.jpeg"
+
+header: false
+footer: false
+
+stylesheet:
+  - "assets/custom.css"
+
+columns: "3"
+theme: default
+colors:
+  light:
+    highlight-primary: "#fff5f2"
+    highlight-secondary: "#fff5f2"
+    highlight-hover: "#bebebe"
+    background: "#12152B"
+    card-background: "rgba(255, 245, 242, 0.8)"
+    text: "#ffffff"
+    text-header: "#fafafa"
+    text-title: "#000000"
+    text-subtitle: "#111111"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#3273dc"
+    link-hover: "#2e4053"
+    background-image: "../assets/wallpaper-light.jpeg"
+  dark:
+    highlight-primary: "#181C3A"
+    highlight-secondary: "#181C3A"
+    highlight-hover: "#1F2347"
+    background: "#12152B"
+    card-background: "rgba(24, 28, 58, 0.8)"
+    text: "#eaeaea"
+    text-header: "#7C71DD"
+    text-title: "#fafafa"
+    text-subtitle: "#8B8D9C"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#c1c1c1"
+    link-hover: "#fafafa"
+    background-image: "../assets/wallpaper.jpeg"
+
+services:
+  - name: "//No-Code"
+    icon: false
+    items:
+      - name: "n8n"
+        logo: "assets/tools/n8n-logo.png"
+        subtitle: "n8n - no-code flows automation"
+        tag: "n8n"
+        tagstyle: "is-primary"
+        url: "http://n8n.workstation"
+        target: "_blank"
+
+      - name: "Nocodb"
+        logo: "assets/tools/nocodb-logo.png"
+        subtitle: "No-code ui for data tables"
+        tag: "nocodb"
+        tagstyle: "is-primary"
+        url: "http://nocodb.workstation"
+        target: "_blank"
+
+      - name: "Appsmith"
+        logo: "assets/tools/appsmith-logo.png"
+        subtitle: "No-code frontend app builder"
+        tag: "appsmith"
+        tagstyle: "is-primary"
+        url: "http://appsmith.workstation"
+        target: "_blank"
+
+  - name: "//Maintenance"
+    icon: false
+    items:
+      - name: "Whoami"
+        logo: "assets/tools/whoami-logo.jpg"
+        subtitle: "Whoa am I?"
+        tag: "whoami"
+        tagstyle: "is-primary"
+        url: "http://whoami.workstation"
+        target: "_blank"
+
+      - name: "Traefik"
+        logo: "assets/tools/traefik-logo.svg"
+        subtitle: "Traefik dashboard"
+        tag: "traefik"
+        tagstyle: "is-primary"
+        url: "http://traefik.workstation:8080"
+        target: "_blank"
+
+      - name: "Portainer"
+        subtitle: "Portainer dashboard"
+        tag: "portainer"
+        tagstyle: "is-primary"
+        url: "http://portainer.workstation"
+        target: "_blank"
+
+  - name: "//Development"
+    icon: false
+    items:
+      - name: "VS Code"
+        logo: "assets/tools/vs-code-logo.png"
+        subtitle: "VSCode"
+        tag: "vscode"
+        tagstyle: "is-primary"
+        url: "http://vscode.workstation"
+        target: "_blank"
+
+      - name: "Jupyter Lab"
+        logo: "assets/tools/jupyter-lab-logo.png"
+        subtitle: "jupyter-lab"
+        tag: "jupyter-lab"
+        tagstyle: "is-primary"
+        url: "http://jupyter-lab.workstation"
+        target: "_blank"
+
+      - name: "pgAdmin"
+        logo: "assets/tools/pgadmin-logo.png"
+        subtitle: "pgAdmin"
+        tag: "pgadmin"
+        tagstyle: "is-primary"
+        url: "http://pgadmin.workstation"
+        target: "_blank"
+
+      - name: "Redis-Insight"
+        logo: "assets/tools/redisinsight-logo.png"
+        subtitle: "Redis-Insight"
+        tag: "redis-insight"
+        tagstyle: "is-primary"
+        url: "http://redis-insight.workstation"
+        target: "_blank"
+
+      - name: "Postman"
+        logo: "assets/tools/postman-logo.png"
+        subtitle: "Postman"
+        tag: "postman"
+        tagstyle: "is-primary"
+        url: "https://web.postman.co/"
+        target: "_blank"
+
+  - name: "//AI"
+    icon: false
+    items:
+      - name: "Open WebUI"
+        logo: "assets/tools/open-webui-logo.png"
+        subtitle: "Open WebUI"
+        tag: "open-webui"
+        tagstyle: "is-primary"
+        url: "http://open-webui.workstation"
+        target: "_blank"
+
+      - name: "Qdrant"
+        logo: "assets/tools/qdrant-logo.png"
+        subtitle: "Qdrant Dashboard"
+        tag: "qdrant"
+        tagstyle: "is-primary"
+        url: "http://qdrant.workstation/dashboard"
+        target: "_blank"

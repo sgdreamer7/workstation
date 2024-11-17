@@ -1,0 +1,22 @@
+# @format
+
+services:
+  nocodb:
+    container_name: nocodb
+    image: 'nocodb/nocodb:latest'
+    restart: always
+    environment:
+      NC_DB: 'pg://postgres:5432?u=${POSTGRES_USERNAME}&p=${POSTGRES_PASSWORD}&d=${NOCODB_POSTGRES_DATABASE}'
+    networks:
+      - workstation
+    volumes:
+      - './data/nocodb-data:/usr/app/data'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nocodb.rule=Host(`nocodb.workstation`)'
+      - 'traefik.http.routers.nocodb.entrypoints=web'
+      - 'traefik.http.services.nocodb.loadBalancer.server.port=8080'
+
+networks:
+  workstation:
+    name: 'workstation'

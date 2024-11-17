@@ -1,0 +1,20 @@
+# @format
+
+services:
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    networks:
+      - workstation
+    volumes:
+      - ./data/qdrant-data:/qdrant/storage
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.qdrant.rule=Host(`qdrant.workstation`)'
+      - 'traefik.http.routers.qdrant.entrypoints=web'
+      - 'traefik.http.services.qdrant.loadBalancer.server.port=6333'
+
+networks:
+  workstation:
+    name: 'workstation'

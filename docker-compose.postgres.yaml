@@ -1,0 +1,27 @@
+# @format
+
+services:
+  postgres:
+    image: 'postgres:14'
+    container_name: postgres
+    healthcheck:
+      interval: 10s
+      retries: 10
+      test: 'pg_isready -U "${POSTGRES_USERNAME}" -d "${POSTGRES_PASSWORD}"'
+      timeout: 2s
+    restart: always
+    user: 'root'
+    environment:
+      - 'POSTGRES_DATABASE=default_db'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_USER=${POSTGRES_USERNAME}'
+      - 'POSTGRES_MULTIPLE_DATABASES=${SUPABASE_POSTGRES_DATABASE},${N8N_POSTGRES_DATABASE},${NOCODB_POSTGRES_DATABASE},${AP_POSTGRES_DATABASE},${APPSMITH_POSTGRES_DATABASE},${DATA_POSTGRES_DATABASE}'
+    networks:
+      - workstation
+    volumes:
+      - ./data/postgres-data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+networks:
+  workstation:
+    name: 'workstation'

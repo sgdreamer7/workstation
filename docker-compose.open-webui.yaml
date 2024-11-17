@@ -1,0 +1,25 @@
+# @format
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui
+    container_name: open-webui
+
+    environment:
+      - 'OLLAMA_BASE_URL=http://host.docker.internal:11434'
+      - 'WEBUI_SECRET_KEY='
+      - 'WEBUI_AUTH=false'
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.open-webui.rule=Host(`open-webui.workstation`)'
+      - 'traefik.http.routers.open-webui.entrypoints=web'
+      - 'traefik.http.services.open-webui.loadBalancer.server.port=8080'
+    networks:
+      - workstation
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+
+networks:
+  workstation:
+    name: 'workstation'

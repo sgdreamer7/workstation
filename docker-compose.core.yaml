@@ -1,0 +1,52 @@
+# @format
+
+services:
+  traefik:
+    image: traefik:v3.1
+    container_name: traefik
+    restart: always
+    ports:
+      - '80:80'
+      - '8080:8080'
+    command:
+      - '--api.insecure=true'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entryPoints.web.address=:80'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - workstation
+
+  whoami:
+    image: 'traefik/whoami'
+    container_name: 'simple-service'
+    networks:
+      - workstation
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.whoami.rule=Host(`whoami.workstation`)'
+      - 'traefik.http.routers.whoami.entrypoints=web'
+
+  portainer:
+    container_name: portainer
+    image: 'portainer/portainer-ce'
+    restart: always
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - 'portainer_data:/data'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.portainer.rule=Host(`portainer.workstation`)'
+      - 'traefik.http.routers.portainer.entrypoints=web'
+      - 'traefik.http.services.portainer.loadBalancer.server.port=9000'
+    networks:
+      - workstation
+
+networks:
+  workstation:
+    name: 'workstation'
+
+volumes:
+  portainer_data:

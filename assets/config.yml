@@ -89,10 +89,19 @@ services:
         target: "_blank"
 
       - name: "Portainer"
+        logo: "assets/tools/portainer-logo.jpeg"
         subtitle: "Portainer dashboard"
         tag: "portainer"
         tagstyle: "is-primary"
         url: "http://portainer.workstation"
+        target: "_blank"
+
+      - name: "Dnsmasq"
+        logo: "assets/tools/dnsmasq-logo.svg"
+        subtitle: "Dnsmasq dashboard"
+        tag: "dnsmasq"
+        tagstyle: "is-primary"
+        url: "http://dnsmasq.workstation"
         target: "_blank"
 
   - name: "//Development"

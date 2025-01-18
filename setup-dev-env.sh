@@ -16,3 +16,4 @@ docker compose -f docker-compose.qdrant.yaml up -d
 docker compose -f docker-compose.vscode.yaml up -d
 docker compose -f docker-compose.n8n.yaml up -d
 set -o allexport; source ./docker-compose.postgres.env; set +o allexport; docker compose -f docker-compose.nocodb.yaml up -d
+./dnsmasq.sh

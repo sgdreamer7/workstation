@@ -44,6 +44,28 @@ services:
     networks:
       - workstation
 
+  dnsmasq:
+    container_name: dnsmasq
+    image: 'jpillora/dnsmasq'
+    restart: always
+    volumes:
+      - './data/dnsmasq.conf:/etc/dnsmasq.conf'
+    logging:
+      options:
+        max-size: '100m'
+    environment:
+      HTTP_USER: foo
+      HTTP_PASS: bar
+    ports:
+      - '53:53/udp'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.dnsmasq.rule=Host(`dnsmasq.workstation`)'
+      - 'traefik.http.routers.dnsmasq.entrypoints=web'
+      - 'traefik.http.services.dnsmasq.loadBalancer.server.port=8080'
+    networks:
+      - workstation
+
 networks:
   workstation:
     name: 'workstation'

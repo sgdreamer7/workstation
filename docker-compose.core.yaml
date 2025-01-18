@@ -57,6 +57,10 @@ services:
       HTTP_USER: foo
       HTTP_PASS: bar
     ports:
+      # The workaround for MacOS https://docs.docker.com/desktop/release-notes/#known-issues-19
+      # in order to allow bind port 53/udp.
+      # Please, update files '~/Library/Group Containers/group.com.docker/settings.json'
+      # and '~/Library/Group Containers/group.com.docker/settings-store.json' with 'kernelForUDP' set to false.
       - '53:53/udp'
     labels:
       - 'traefik.enable=true'
